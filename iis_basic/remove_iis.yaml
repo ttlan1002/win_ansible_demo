@@ -1,0 +1,21 @@
+---
+- name: remove iis
+  hosts: windows
+  tasks:
+    - name: stop iis service
+      win_service:
+        name: W3Svc
+        state: stopped
+
+    - name: delete Web service
+      win_feature:
+        name: Web-Server
+        state: absent
+
+    - name: delete index file
+      win_file:
+         path: C:\Inetpub\wwwroot\index.html
+         state: absent
+
+    - name: reboot server
+      win_reboot:
