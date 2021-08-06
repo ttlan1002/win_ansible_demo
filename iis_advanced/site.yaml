@@ -2,4 +2,4 @@
 - name: this is my role-based playbook
   hosts: windows
   roles:
-    - iis-simple
+    - iis_simple
